@@ -28,8 +28,9 @@ header h1{font-size:5vw}
 <header><h1>&quot;Above The Fold&quot; - how to fix, IMHO...</h1></header>
 <section><h2>1st step: &quot;Critical CSS&quot;</h2>
 <div>Either read Katie Harron's <a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank">article</a> regarding this topic, and and follow her instructions to generate a bookmarklet, from the javascript which she supplies in her article, to find your page's critical CSS. Or use Jonas S. Ohlson's <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank">online tool</a> to find your page's critical CSS<br>In both cases, insert the &quot;generated critical CSS&quot; as inline CSS between the &lt;head&gt;&lt;/head&gt;-element of your page.<br>
-For more info, read Patrick Sexton's article &quot;<a href="https://varvy.com/pagespeed/render-blocking-css.html" target="_blank">Eliminate render blocking css</a>&quot;</div></section>
- <section><h2>2nd step: LoadCSS</h2>
+For more info, read Patrick Sexton's article &quot;<a href="https://varvy.com/pagespeed/render-blocking-css.html" target="_blank">Eliminate render blocking css</a>&quot;</div>
+</section>
+<section><h2>2nd step: LoadCSS</h2>
 <div>Source:<a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></div>
 <div>Do NOT delete your initial, created CSS-file(s) after completing &quot;Step 1&quot;, as you'll be using it (or them) in the following!</div>
 <code>...&lt;/footer&gt;<br>&lt;script src="//cdn.rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"&lt;/script&gt;<br>
