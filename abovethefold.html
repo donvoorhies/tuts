@@ -28,7 +28,8 @@ header h1{font-size:5vw}
 <header><h1>&quot;Above The Fold&quot; - how to fix, IMHO...</h1></header>
 <section><h2>1st step: &quot;Critical CSS&quot;</h2>
 <div>Either read Katie Harron's <a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank">article</a> regarding this topic, and and follow her instructions to generate a bookmarklet, from the javascript which she supplies in her article, to find your page's critical CSS. Or use Jonas S. Ohlson's <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank">online tool</a> to find your page's critical CSS<br>In both cases, insert the &quot;generated critical CSS&quot; as inline CSS between the &lt;head&gt;&lt;/head&gt;-element of your page.</div></section>
-<section><h2>2nd step: LoadCSS</h2>
+ <div>For more info, read Patrick Sexton's article &quot;<a href="https://varvy.com/pagespeed/render-blocking-css.html" target="_blank">Eliminate render blocking css</a>&quot;</div> 
+ <section><h2>2nd step: LoadCSS</h2>
 <div>Source:<a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></div>
 <div>Do NOT delete your initial, created CSS-file(s) after completing &quot;Step 1&quot;, as you'll be using it (or them) in the following!</div>
 <code>...&lt;/footer&gt;<br>&lt;script src="//cdn.rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"&lt;/script&gt;<br>
@@ -54,10 +55,19 @@ Repeat the function-call above, if you have any other CSS-files that you need to
 &lt;/body&gt;
 </code>
 </section>
-<section><h2>Conclusion</h2>
+<section><h2>Conclusion:</h2>
 <div>The practices described in the above (or most of them) have also been implemented in connection with this &quot;how-to&quot;,<br> 
  which you've just read! If it's worked or not, can be seen here: <a href="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fdonvoorhies.github.io%2Ftuts%2Fabovethefold.html&tab=desktop" target="_blank">Pagespeed Insights</a></div>
  <div>You're more than welcome to check out this webpage's <a href="https://raw.githubusercontent.com/donvoorhies/tuts/master/abovethefold.html" target="_blank">source-code</a> to see an example, regarding how things were done in connection with the described steps above</div>
+ </section>
+ <section><h2>Links:</h2>
+ <ul>
+  <li><a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank">https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a</a></li>
+  <li><a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank">https://jonassebastianohlsson.com/criticalpathcssgenerator/</a></li>
+  <li><a href="https://varvy.com/pagespeed/render-blocking-css.html">https://varvy.com/pagespeed/render-blocking-css.html</a>
+  <li><a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></li>
+  <li><a href="https://github.com/typekit/webfontloader" target="_blank">https://github.com/typekit/webfontloader</a></li>
+  </ul
  </section>
 <div class="push"></div>
 </main>
