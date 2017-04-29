@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Untitled Document</title>
+<style>
+* {margin:0}
+html, body {height:100%}
+body{font:16px 'Open Sans', Sans Serif, Serif}
+main {min-height: 100%;margin: 0 auto -45px}
+header{height:54px;background:#000;width:100%;max-width:100%}
+header h1{font:2em  'Lato', Sans-Serif, Serif;color:#FFF;line-height:54px}
+section{width:90%; max-width:90%;margin:0 auto 36px auto}
+pre{font:12px monospace, Sans-Serif,Serif;color:#FFF;background:#000;height:500px}
+footer{background:#000}
+footer, .push{height:45px}
+.cf:before,.cf:after{content:" ";display:table}
+.cf:after{clear:both}
+/*http://nicolasgallagher.com/micro-clearfix-hack/*/
+@media only screen and (max-width:599px){
+header h1{font-size:4vw}
+nav{border:0 none;position:relative;height:auto}
+nav ul li{display:block;border-bottom:1px solid #2245A6;width:100%;height:45px;line-height:45px}
+nav ul li:first-child{border-top:1px solid #ffffff;}
+nav ul li a{display:block;height:45px;line-height:45px;padding-left:9px}
+nav ul li a:hover{display:block;background:#2245A6;color:#FFFFFF;height:45px;line-height:45px;width:100%}
+}
+</style>
+</head>
+
+<body>
+<main>
+<header><h1>&quot;Above The Fold&quot; - how to fix, IMHO...</h1></header>
+<nav></nav>
+<section><h2>&quot;Critical CSS&quot;</h2>
+<div>Either read Katie Harron's <a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank">article</a> regarding this topic, and and follow her instructions to generate a bookmarklet, from the javascript which she supplies in her article, to find your page's critical CSS. Or use Jonas S. Ohlson's <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank">online tool</a> to find your page's critical CSS<br>In both cases, insert the &quot;generated critical CSS&quot; inline between the &lt;head&gt;&lt;/head&gt;-element of your page.</div></section>
+<section><h2>LoadCSS</h2>
+<div>Source:<a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></div>
+<code>...&lt;/footer&gt;<br>&lt;script src="//cdn.rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"&lt;/script&gt;<br>
+&lt;script&gt;loadCSS( "path/to/mystylesheet.css" );&lt;/script&gt;<br><br>
+Repeat the function-call above, if you have any other CSS-files that you need to use by putting in the following after the first function-call - i.e.:<br>
+&lt;script&gt;loadCSS( "path/to/mystylesheet.css" );&lt;/script&gt;<br>
+&lt;script&gt;loadCSS( "path/to/second_stylesheet.css" );&lt;/script&gt;<br>
+&lt;script&gt;loadCSS( "path/to/third_stylesheet.css" );&lt;/script&gt;<br>
+(All other Javascript-/jQuery-stuff follows by going in here...)
+&lt;/body&gt;
+</code>
+</section>
+<section><h2>webfontloader</h2>
+<div>Source: <a href="https://github.com/typekit/webfontloader" target="_blank">webfontloader</a></div>
+<code>
+...&lt;/footer&gt;<br>
+(the lines of code above for "loadCSS" goes in here, then insert...)<br>
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"&gt;&lt;/script&gt;<br>
+(All of your other jQuery-libraries that you need to use put in here...)<br>
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"&gt;&lt;/script&gt;<br>
+&lt;script&gt;WebFont.load({google:{families: ['Droid Sans','Droid Serif']}});&lt;/script&gt;<br>
+&lt;/body&gt;
+</code>
+</section>
+<div class="push"></div>
+</main>
+<footer></footer>
+
+<!--
+<script src="//cdn.rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"</script>
+<script>loadCSS( "path/to/mystylesheet.css" );</script>-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script>
+<script>WebFont.load({google:{families:["Lato:400,700|Open+Sans:400,700"]}});</script>
+<script>$(document).ready(function(){$(window).resize(function(){var a=$("footer").outerHeight();$(".push").height(a),$("main").css({marginBottom:"-"+a+"px"})}),$(window).resize()});/*http://codepen.io/imohkay/pen/htpzf*/</script>
+</body>
+</html>
+
