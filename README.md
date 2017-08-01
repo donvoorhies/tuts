@@ -3,4 +3,5 @@
 <ul>
 <li><a href="micromenu.html">MicroMenu - a small RWD-menu</a></li>
 <li><a href="abovethefold.html">"Above The Fold&quot; - how to fix, IMHO..."</a></li>
+<li><a href="skabelon.html">"Semantic tags usage - example"</a></li>
 </ul>
