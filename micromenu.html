@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MicroMenu (RWD)</title>
+<style>
+ * {margin:0}
+html, body {height:100%}
+body{font:16px 'Open Sans', Sans-Serif, Serif}
+main {min-height:100%;margin:0 auto -45px}
+header{height:54px;background:#000;width:100%;max-width:100%}
+header h1{font:2em  'Lato', Sans-Serif, Serif;color:#FFF;line-height:54px}
+header,main,section,footer{width:100%;max-width:100%}
+section{width:90%; max-width:90%;margin:0 auto 36px auto}
+section h2{font:1.8em 'Lato',Sans-serif,Serif;margin-bottom:16px}  
+code{font:12px monospace, Sans-Serif,Serif}
+footer{background:#000;text-align:center;line-height:45px}
+footer a{text-decoration:none;color:#FFF}
+footer, .push{height:45px}
+@media only screen and (max-width:599px){
+header h1{font-size:6vw}
+section h2{font-size:5vw}
+nav{border:0 none;position:relative;height:auto}
+nav ul li{display:block;border-bottom:1px solid #2245A6;width:100%;height:45px;line-height:45px}
+nav ul li:first-child{border-top:1px solid #ffffff;}
+nav ul li a{display:block;height:45px;line-height:45px;padding-left:9px}
+nav ul li a:hover{display:block;background:#2245A6;color:#FFFFFF;height:45px;line-height:45px;width:100%}
+} </style>
+</head>
+
+<body>
+<main>
+<header><h1>MicroMenu - a small RWD-menu</h1></header>
+<nav></nav>
+<section><h2>&quot;Micro Menu - the smallest menu around?&quot;</h2>
+<p>Without knocking it in any way, this take on a responsive menu should code wise be smaller than the otherwise totally-cool <a href="http://tinynav.com/" target="_blank">tinynav</a>.</p>
+<div>&nbsp;</div>
+<p>Contrary to tinynav, this solution that I'd like to put forth here in this tutorial:</p><ul><li>A. Doesn't use jQuery - like, at ALL!</li><li>B. Only uses 89 characters-worth(!) of Javascript.</li></ul></section>
+<section><h2>The HTML-code:</h2>
+<p>First, let's check out the HTML-code, which looks like this:</p>
+<code>&lt;nav&gt;<br>
+&lt;ul&gt;<br>&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+&lt;li&gt;&lt;a href="#"&gt;Page 1&lt;/a&gt;&lt;/li&gt;<br>
+&lt;li&gt;&lt;a href="#"&gt;Page 2&lt;/a&gt;&lt;/li&gt;<br>
+&lt;li&gt;&lt;a href="#"&gt;Page 3&lt;/a&gt;&lt;/li&gt;<br>
+&lt;/ul&gt;<br>
+&lt;form action="#"&gt;<br>
+&lt;select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value"&gt;<br>
+&lt;option class="menu" value="" selected&gt;&equiv;&lt;/option&gt;<br>
+&lt;option value="index.html"&gt;Home&lt;/option&gt;<br>
+&lt;option value="pages/side1.html"&gt;Page 1&lt;/option&gt;<br>
+&lt;option value="pages/side2.html"&gt;Page 2&lt;/option&gt;<br>
+&lt;option value="pages/side3.html"&gt;Page 3&lt;/option&gt;<br>
+&lt;/select&gt;<br>
+&lt;/form&gt;<br>
+&lt;/nav&gt;</code>
+<div>&nbsp;</div>
+<p>...Please note, how the only bit of Javascript used has been slipped into the &quot;select&quot;-element!</p>
+<p>(In all honesty, I haven't worked the select-tag with Javascript in a long time, so thanks goes to: <a href="http://www.javascripter.net/faq/linksina.htm" target="_blank">http://www.javascripter.net/faq/linksina.htm</a> for reminding me!)</p>
+</section>
+<section><h2>The CSS-code</h2>
+<p>The CSS-code needed to pull this off and should be included in your own CSS-code, looks like this:</p>
+<code>
+nav{height:27px;line-height:27px;width:100%}<br>
+nav ul{margin:0;padding:0}<br>
+nav ul li{list-style-type:none;display:inline}<br>
+nav ul li a{margin-right:21px}<br>
+select{display:none}<br>
+@media(max-width:699px){<br>
+nav{height:auto}<br>
+nav ul{display:none}<br>
+select{display:block;width:100%;height:45px;background:#000;color:#fff;font-size:30px;margin:0}<br>
+}<br>
+</code>
+<p>The break-point is here set to 699px, but this can altered to whatever break-point, you feel is appropiate for your project.</p>	
+</section>
+<section><h2>Try it out...</h2>
+<p>A working example of the code above can be tried and seen here: <a href="https://donvoorhies.github.io/tuts/micromenu_ex.html" target="_blank">https://donvoorhies.github.io/tuts/micromenu_ex.html</a></p>
+<p>Point your mobile-device to the URL-address above or use the following QR-code below:</p>
+<p><img src="https://chart.googleapis.com/chart?cht=qr&amp;chs=200x200&choe=UTF-8&amp;chld=H&amp;chl=https://goo.gl/svR0Bv" alt="QR-code"></p>
+<div>&nbsp;</div>
+<p>The example-page's code can be seen here: <a href="https://raw.githubusercontent.com/donvoorhies/tuts/master/micromenu_ex.html" target="_blank">https://github.com/donvoorhies/tuts/blob/master/micromenu_ex.html</a></p>
+</section>
+<section><h2>Conclusion (well, sort of...):</h2>
+<p>If you are on the lookout for a &quot;no-fuss&quot;, easy to set up and lightweight RWD-menu, then in all modesty, the RWD-menu described herein this page should be what you're looking for!</p>
+<p>P.S. Micro Menu is NOT suited to be used for smooth-scrolled one-page sites - jus' sayin'!...!
+</section>
+<div class="push"></div>
+</main>
+<footer><a href="https://donvoorhies.github.io/tuts/">&lsqb;Menu&rsqb;</a></footer>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script>
+<script>WebFont.load({google:{families:['Lato:400,700%','Open+Sans:400,700']}});</script>
+<script>$(document).ready(function(){$(window).resize(function(){var a=$("footer").outerHeight();$(".push").height(a),$("main").css({marginBottom:"-"+a+"px"})}),$(window).resize()});/*http://codepen.io/imohkay/pen/htpzf*/</script>
+</body>
+</html>
+

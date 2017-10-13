@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MicroMenu (RWD)</title>
+<style>
+* {margin:0}
+html, body {height:100%}
+body{font:16px 'Open Sans', Sans-Serif, Serif}
+header,main,section,footer{width:100&;max-width:100%}
+main {min-height: 100%;margin: 0 auto -45px}
+header{height:54px;background:#000;width:100%;max-width:100%}
+header h1{font:2em  'Lato', Sans-Serif, Serif;color:#FFF;line-height:54px}
+nav{height:27px;line-height:27px;width:100%;border-bottom: 1px solid #000}
+nav ul{margin:0;padding:0}
+nav ul li{list-style-type:none;display:inline}
+nav ul li a{margin:0 15px 0 6px;text-decoration:none;color:#000}
+nav ul li a:hover{text-decoration:underline;color:#F00;transition: .3s}
+select{display:none}
+section h2{font:1.8em 'Lato',Sans-serif,Serif;margin-bottom:16px}
+section{width:90%; max-width:90%;margin:0 auto 36px auto}
+code{font:12px monospace, Sans-Serif,Serif}
+footer{background:#000;text-align:center;line-height:45px}
+footer a{text-decoration:none;color:#FFF}
+footer, .push{height:45px}
+@media only screen and (max-width:599px){
+header h1{font-size:6vw}
+section h2{font-size:5vw}
+nav{height:auto}
+nav ul{display:none}
+select{display:block;width:100%;height:45px;background:#000;color:#fff;font-size:30px;margin:0}
+}
+</style>
+</head>
+<body>
+<main>
+<header><h1>MicroMenu - Page2</h1></header>
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Page 1</a></li>
+<li><a href="#">Page 2</a></li>
+<li><a href="#">Page 3</a></li>
+</ul>
+<form action="#">
+<select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+<option class="menu" value="" selected>≡</option>
+<option value="https://donvoorhies.github.io/tuts/micromenu_ex.html">Home</option>
+<option value="https://donvoorhies.github.io/tuts/micromenu_ex1.html">Page 1</option>
+<option value="https://donvoorhies.github.io/tuts/micromenu_ex2.html">Page 2</option>
+<option value="https://donvoorhies.github.io/tuts/micromenu_ex3.html">Page 3</option>
+</select>
+</form>
+</nav>
+<section><h2>Section 1</h2>Lorem ipsum dolor sit amet, odio quam fermentum turpis, ullamcorper tortor in non in natoque, aenean purus convallis feugiat convallis, et condimentum. Lacus pellentesque ligula euismod dolor amet duis, in urna rutrum elit sagittis, sed ultrices pulvinar, tortor a lectus interdum risus, ut lacinia eros euismod porta. Gravida nec. In et sollicitudin integer et. Rutrum ante egestas diam taciti, dolor molestie, ut neque, vestibulum ac posuere wisi integer lacus feugiat. Diam donec duis est ultricies, blandit maecenas per in maecenas vestibulum. Hymenaeos et mollis sed.</section>
+<section><h2>Section 2</h2>Pulvinar torquent neque. Non donec volutpat, mauris pede molestie quam donec, amet eu qui sit ut quod consectetuer. Magnis metus conubia wisi, ornare quam at enim nam. Maecenas dictumst, sodales senectus nibh diam donec velit tempus. Orci lacinia, non elit a, quam elit aliquam erat tortor, metus vel netus consequat, nulla mi nunc vulputate. Ac ultrices nec arcu vitae risus aliquet. Ridiculus diam magna hymenaeos purus non sem, enim ut sapien sollicitudin in bibendum hendrerit. Lectus neque, et pretium vestibulum, pretium a nulla placerat pretium gravida, pellentesque eget. Viverra ut erat turpis suspendisse lacus. Nisl vel, non felis ac mauris donec elit, magna id, vestibulum ipsum diam pharetra at posuere, at aliquet augue a cras. Mi vitae interdum, ut nibh lectus elit, cras vel, vel dui id pellentesque etiam, sagittis est. Duis lobortis in dui, ultricies neque, nulla tincidunt suspendisse gravida amet, wisi purus tortor gravida in.</section>
+<section><h2>Section 3</h2>Nullam tempus in sit, urna ut justo, consectetuer lobortis volutpat est. Suscipit vehicula ut pellentesque ac vitae urna, erat eros ut. Lorem erat habitasse, pellentesque volutpat sit cras nec felis, erat aliquam pretium amet tellus, et id, libero purus conubia mi integer. Tellus metus, beatae lorem phasellus, nisi integer sit nam ipsum inceptos, sed et fermentum tellus vitae. Ante donec nulla vitae, suscipit sapien wisi habitasse mollis, enim duis facilisis nec, leo gravida maecenas dolor urna consectetur id. Cursus aliquam vel tortor enim interdum mi, suspendisse ultrices, parturient non mattis leo fusce sed maecenas, suscipit imperdiet porttitor augue.</section>
+<section><h2>Section 4</h2>Mi tincidunt et rhoncus. Dolor tellus sed massa dui ipsum posuere, lectus ligula morbi conubia, torquent praesent auctor dolor mi vitae in, eu amet est gravida aliquam pellentesque maecenas. Neque a tortor quos vitae vestibulum etiam, vitae lorem non massa integer habitasse id, augue dui amet, felis egestas mi at nonummy, in ad velit sed fusce. Varius sollicitudin pellentesque mi non pellentesque volutpat, hac pharetra porta, massa non hendrerit suspendisse lacinia mus in, dui vel elit, est justo nunc nunc in. Ipsum vel ligula amet pellentesque similique, ut eu dapibus nam id. Maecenas mauris pulvinar gravida dui, a eget aptent vitae blandit interdum duis, dolor tincidunt tincidunt mus rutrum ut, ipsum pariatur, amet inceptos ornare luctus sed. Nulla quis at pharetra egestas dolor, wisi veniam bibendum rhoncus velit. Tincidunt vel aliquet dictumst, vulputate mattis laoreet, dapibus urna volutpat aliquet condimentum pulvinar.</section>
+
+<div class="push"></div>
+</main>
+<footer><a href="https://donvoorhies.github.io/tuts/">[Menu]</a></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script>WebFont.load({google:{families:['Lato','Open+Sans']}});</script>
+<script>$(document).ready(function(){$(window).resize(function(){var a=$("footer").outerHeight();$(".push").height(a),$("main").css({marginBottom:"-"+a+"px"})}),$(window).resize()});/*http://codepen.io/imohkay/pen/htpzf*/</script>
+</body>
+</html>
+
