@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="da-DK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One-Page Site</title>
+<style>
+html,body{height:100%;margin:0}
+body{font:16px 'Work Sans',Arial,sans-serif,serif;display: flex;flex-direction: column;}
+/*https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/*/
+main{width:100%;max-width:100%;  flex: 1 0 auto}
+header,nav{padding-left:24px;width:calc(100% - 24px);max-width:100%;position:fixed;z-index:10}
+header{height:61px;top:0;background:#FFF;line-height:14px;border-bottom:1px solid #999}
+header h1{font-size:2em;padding:0}
+nav{top:62px;height:24px;background:#FFF;line-height:24px;border-bottom:1px solid #999}
+nav ul{padding:0;margin:0}
+nav ul li{display:inline;list-style-type:0; margin:0 21px 0 0}
+section{width:calc(1024px - 18px);max-width:100%;margin:0 auto;padding:0 9px 0 9px}
+section#part1{margin-top:100px}
+footer{height:24px; line-height:24px; width:1024px;max-width:100%;text-align: center;margin:0 auto}
+img, video{width:1280px;height:auto;max-width:100%}
+iframe{border:0}
+a,a:active,a:visited{color:#000;text-decoration: none}
+a:hover{color:#999}
+#burgernav{display:none}
+
+@media(max-width:599px){
+header,nav{padding-left:9px;width:calc(100% - 9px);max-width:100%}
+nav{padding-left:0}
+header h1{float:left}
+nav{height:auto;display:none}
+nav ul li,nav ul li a.funk{display:block;height:45px;line-height:45px;border-bottom:1px solid #999;width:100%;max-width:100%;padding:0;margin:0}
+nav ul li a.funk:hover{background:#999;color:#FFF}
+section{padding:0 9px 0 9px;width:calc(100% - 18px);max-width:100%;margin:0 auto}
+section#part1{margin-top:100px}
+#burgernav{display:block;float:right;height:43px;width:43px;color:#000;border:1px #000 solid;text-align:center;line-height:43px;font-size:3em;margin-top:7px}
+
+}
+</style>
+</head>
+<!-- One-page site inspired by: https://github.com/cferdinandi/smooth-scroll -->
+<body>
+<main id="part0">
+<header><h1><a class="funk" href="#part0">One-Page Site</a></h1><div id="burgernav"><a class="burgernav" href="#">&equiv;</a></div></header>
+<nav><ul><li><a class="funk" href="#part1" data-scroll>Page 1</a></li><li><a class="funk" href="#part2" data-scroll>Page 2</a></li><li><a class="funk" href="#part3" data-scroll>Page 3</a></li></ul></nav>
+<section id="part1">
+<h2>"Page 1"</h2>
+<div>
+<h3>Big Buck Bunny (revisited)</h3>	
+<video controls src="//archive.org/download/BigBuckBunny1280x720Stereo/big_buck_bunny_720_stereo.mp4"></video>
+</div>
+<p>
+Lorem ipsum dolor sit amet, nulla praesent aliquam nec egestas mi leo, nulla consequat auctor pharetra maecenas mattis pede, et venenatis massa ipsum porttitor cursus eros. In orci lectus duis ante sollicitudin ligula, quia nunc elementum velit sed massa adipiscing. Tellus in, odio justo etiam et. Velit diam tortor purus, volutpat aenean lectus ut mauris viverra ante, elementum mauris, senectus sed neque cras maecenas suspendisse. Donec vivamus elementum vehicula morbi nibh, sapien etiam placerat laoreet ultrices, erat enim felis tempus volutpat mauris, diam velit accumsan est nam.</p>
+<p>
+Fermentum mauris gravida nec in, suspendisse in diam adipiscing, eget orci suscipit, massa condimentum felis magnis integer elementum, natoque ut et tellus diam sociis. Orci porttitor diam, odio dolor pellentesque erat vel praesent, ac sem wisi pede, ultrices elementum aliquam vitae tempor ad orci, massa quam pellentesque sodales dolor. Habitasse luctus neque vel pellentesque. Diam suscipit amet vitae primis nisl, lorem massa pretium est. Aliquam praesent. Nunc wisi nisl amet in, mi congue sodales tellus nec, cras libero integer est phasellus ridiculus sociis. Arcu tincidunt vel, amet dui neque est.</p>
+<p>
+Sed vitae. Pulvinar vehicula amet in eros, maecenas magna bibendum, tincidunt interdum id eu sed consequat, hendrerit sollicitudin nibh magna velit in facilisis. Eget volutpat odio in adipiscing lorem. Eu neque mollis, lobortis tellus metus, lacus vel placerat ultricies nulla diam massa, at imperdiet mauris lacus lobortis neque. Scelerisque adipiscing non eros accumsan lorem molestie, cursus ante, placerat nibh pellentesque rem cursus sed pede, id a, suspendisse sollicitudin hac justo amet ipsum. Aut ullamcorper luctus placerat euismod hendrerit, tortor vitae nonummy eleifend ac quisque, donec et wisi, porta volutpat parturient mauris etiam. Porta facilisis donec vehicula nec. Eum et amet sed interdum, scelerisque ut, metus rhoncus dignissim ut vitae a, et vehicula erat venenatis id. Vitae accumsan feugiat morbi eleifend sollicitudin, eros nulla egestas nam penatibus augue luctus, volutpat eget. Id ipsum. Nascetur elementum nisl.</p>
+<p>
+Dui quis sed, accumsan sit eget duis ante dignissim. Morbi vestibulum arcu rerum non consequat morbi, vulputate sit aliquam faucibus et sed, cubilia eu urna mauris tincidunt malesuada lorem, pede a mi cras odio, lacinia in pharetra accusantium mauris. Lectus magnis iaculis morbi neque magna, platea a, maecenas tempor ridiculus, lectus suspendisse convallis elit vitae. Egestas nulla, augue proin lectus, quam vel gravida, elementum scelerisque. Risus amet in sed pretium velit, neque nibh dolor, justo odio in est, dui nec amet ullamcorper elementum ultricies in. Ante donec, vestibulum mauris. Vestibulum sit viverra suspendisse vehicula ac, at non ac placerat in, et posuere sit elementum quisque, pharetra erat amet cras magna aenean vel, necessitatibus sapien lacus mauris ante blandit. Massa vel, eu quisque turpis. Ligula est consectetuer id, mauris orci purus lacinia ipsum, dolor justo mauris, imperdiet phasellus.</p>
+<p>
+Quis sit aliquet accumsan, proin lobortis. Sit justo, vitae tristique metus sollicitudin, sapien malesuada egestas ad rutrum. Libero lobortis turpis justo, iaculis quis sed aenean malesuada, dui eros lorem eleifend pretium phasellus proin, nulla amet, rutrum rhoncus non. Montes mauris est vitae iaculis, magna sit erat sem nec, quis mi duis, eu porta tellus ut. Urna proin.</p>
+<p>
+Nascetur integer nulla congue, id velit vestibulum ornare, congue vulputate aliquam vitae dolor, bibendum metus eget. Urna massa malesuada quam class tellus, quis hac ipsum eget amet, sollicitudin a, morbi suspendisse vel, elit tincidunt neque lectus nobis justo et. Laoreet pellentesque ac praesent, dignissim lectus scelerisque purus ut. Massa dictum sociis elit pellentesque provident mi. Purus aliquam egestas nibh a nec. Elit elementum ac leo adipiscing libero amet, congue erat mus velit cursus sit sem, lorem lectus, at lectus. Doloribus eu tristique mattis, nullam rutrum odio donec, odio vel lectus nulla nunc sed.</p>
+<p>
+A sed quis id leo, etiam sagittis placerat vestibulum in, eros felis dictum nulla. Platea lectus, mus a nec dignissim. Ipsum amet ut feugiat id rutrum, pellentesque nibh ante urna dapibus in, ullamcorper in nostra risus donec sem rutrum, facilisis eros consequat, elit ex arcu vehicula commodo mauris luctus. Elementum donec iaculis, quam aliquam mollis, elementum semper consectetuer amet, potenti wisi aliquet, torquent nibh ut mi cras lacus nec. Sodales natoque id urna mauris volutpat turpis, nascetur nulla neque eget volutpat nec in, nulla volutpat ut ac, pellentesque arcu. Cursus sagittis quis, id sem sit nullam in nunc lacinia, blandit vivamus, lectus risus eiusmod mi.</p>
+<p>
+Congue libero lectus lacus, nec nunc augue maecenas at dolor, mollis id est erat ridiculus potenti ligula, orci elit et, ipsum vehicula. Sed amet inceptos integer tincidunt, vivamus odio vestibulum luctus imperdiet aliquam viverra. Vitae non nec magna, est quis iaculis elit, ad ut ante sem nec pulvinar vitae. Imperdiet nisl a urna pulvinar molestie placerat, augue eu condimentum euismod, felis elit integer lectus ullam hac congue, vel orci vulputate vel, tincidunt pharetra lacinia et cras fermentum. Leo ante eu magna hymenaeos lobortis scelerisque.</p>
+<p>
+</p>
+</section>
+<section id="part2">
+<h2>"Page 2"</h2>
+<h3>A word and a DJ-set (or two) from Don Voorhies</h3>
+<div><img src="dwv_glare_big-1024x682.jpg" width="1024" height="682" alt="Don Voorhies"/></div>
+<p>Lorem ipsum dolor sit amet, nulla praesent aliquam nec egestas mi leo, nulla consequat auctor pharetra maecenas mattis pede, et venenatis massa ipsum porttitor cursus eros. In orci lectus duis ante sollicitudin ligula, quia nunc elementum velit sed massa adipiscing. Tellus in, odio justo etiam et. Velit diam tortor purus, volutpat aenean lectus ut mauris viverra ante, elementum mauris, senectus sed neque cras maecenas suspendisse. Donec vivamus elementum vehicula morbi nibh, sapien etiam placerat laoreet ultrices, erat enim felis tempus volutpat mauris, diam velit accumsan est nam.</p>
+<p>
+Fermentum mauris gravida nec in, suspendisse in diam adipiscing, eget orci suscipit, massa condimentum felis magnis integer elementum, natoque ut et tellus diam sociis. Orci porttitor diam, odio dolor pellentesque erat vel praesent, ac sem wisi pede, ultrices elementum aliquam vitae tempor ad orci, massa quam pellentesque sodales dolor. Habitasse luctus neque vel pellentesque. Diam suscipit amet vitae primis nisl, lorem massa pretium est. Aliquam praesent. Nunc wisi nisl amet in, mi congue sodales tellus nec, cras libero integer est phasellus ridiculus sociis. Arcu tincidunt vel, amet dui neque est.</p>
+<p>
+Sed vitae. Pulvinar vehicula amet in eros, maecenas magna bibendum, tincidunt interdum id eu sed consequat, hendrerit sollicitudin nibh magna velit in facilisis. Eget volutpat odio in adipiscing lorem. Eu neque mollis, lobortis tellus metus, lacus vel placerat ultricies nulla diam massa, at imperdiet mauris lacus lobortis neque. Scelerisque adipiscing non eros accumsan lorem molestie, cursus ante, placerat nibh pellentesque rem cursus sed pede, id a, suspendisse sollicitudin hac justo amet ipsum. Aut ullamcorper luctus placerat euismod hendrerit, tortor vitae nonummy eleifend ac quisque, donec et wisi, porta volutpat parturient mauris etiam. Porta facilisis donec vehicula nec. Eum et amet sed interdum, scelerisque ut, metus rhoncus dignissim ut vitae a, et vehicula erat venenatis id. Vitae accumsan feugiat morbi eleifend sollicitudin, eros nulla egestas nam penatibus augue luctus, volutpat eget. Id ipsum. Nascetur elementum nisl.</p>
+<div><iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fdee3%2F4-carina-2017%2F"></iframe></div>
+<p>
+Dui quis sed, accumsan sit eget duis ante dignissim. Morbi vestibulum arcu rerum non consequat morbi, vulputate sit aliquam faucibus et sed, cubilia eu urna mauris tincidunt malesuada lorem, pede a mi cras odio, lacinia in pharetra accusantium mauris. Lectus magnis iaculis morbi neque magna, platea a, maecenas tempor ridiculus, lectus suspendisse convallis elit vitae. Egestas nulla, augue proin lectus, quam vel gravida, elementum scelerisque. Risus amet in sed pretium velit, neque nibh dolor, justo odio in est, dui nec amet ullamcorper elementum ultricies in. Ante donec, vestibulum mauris. Vestibulum sit viverra suspendisse vehicula ac, at non ac placerat in, et posuere sit elementum quisque, pharetra erat amet cras magna aenean vel, necessitatibus sapien lacus mauris ante blandit. Massa vel, eu quisque turpis. Ligula est consectetuer id, mauris orci purus lacinia ipsum, dolor justo mauris, imperdiet phasellus.</p>
+<p>
+Quis sit aliquet accumsan, proin lobortis. Sit justo, vitae tristique metus sollicitudin, sapien malesuada egestas ad rutrum. Libero lobortis turpis justo, iaculis quis sed aenean malesuada, dui eros lorem eleifend pretium phasellus proin, nulla amet, rutrum rhoncus non. Montes mauris est vitae iaculis, magna sit erat sem nec, quis mi duis, eu porta tellus ut. Urna proin.</p>
+<div><iframe width="100%" height="120" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fdee3%2Flive-from-bornholm%2F"></iframe></div>
+<p>
+Nascetur integer nulla congue, id velit vestibulum ornare, congue vulputate aliquam vitae dolor, bibendum metus eget. Urna massa malesuada quam class tellus, quis hac ipsum eget amet, sollicitudin a, morbi suspendisse vel, elit tincidunt neque lectus nobis justo et. Laoreet pellentesque ac praesent, dignissim lectus scelerisque purus ut. Massa dictum sociis elit pellentesque provident mi. Purus aliquam egestas nibh a nec. Elit elementum ac leo adipiscing libero amet, congue erat mus velit cursus sit sem, lorem lectus, at lectus. Doloribus eu tristique mattis, nullam rutrum odio donec, odio vel lectus nulla nunc sed.</p>
+<p>
+A sed quis id leo, etiam sagittis placerat vestibulum in, eros felis dictum nulla. Platea lectus, mus a nec dignissim. Ipsum amet ut feugiat id rutrum, pellentesque nibh ante urna dapibus in, ullamcorper in nostra risus donec sem rutrum, facilisis eros consequat, elit ex arcu vehicula commodo mauris luctus. Elementum donec iaculis, quam aliquam mollis, elementum semper consectetuer amet, potenti wisi aliquet, torquent nibh ut mi cras lacus nec. Sodales natoque id urna mauris volutpat turpis, nascetur nulla neque eget volutpat nec in, nulla volutpat ut ac, pellentesque arcu. Cursus sagittis quis, id sem sit nullam in nunc lacinia, blandit vivamus, lectus risus eiusmod mi.</p>
+<p>
+Congue libero lectus lacus, nec nunc augue maecenas at dolor, mollis id est erat ridiculus potenti ligula, orci elit et, ipsum vehicula. Sed amet inceptos integer tincidunt, vivamus odio vestibulum luctus imperdiet aliquam viverra. Vitae non nec magna, est quis iaculis elit, ad ut ante sem nec pulvinar vitae. Imperdiet nisl a urna pulvinar molestie placerat, augue eu condimentum euismod, felis elit integer lectus ullam hac congue, vel orci vulputate vel, tincidunt pharetra lacinia et cras fermentum. Leo ante eu magna hymenaeos lobortis scelerisque.
+</p>
+</section>
+<section id="part3">
+<h2>Page 3</h2>
+<h3>Need a DJ-controller for Ableton? Got a spare 'droid tablet? Look here...!</h3>
+<div><img src="dee3_controller.jpg" alt="dee3 Controller"/></div>
+<p>
+Lorem ipsum dolor sit amet, nulla praesent aliquam nec egestas mi leo, nulla consequat auctor pharetra maecenas mattis pede, et venenatis massa ipsum porttitor cursus eros. In orci lectus duis ante sollicitudin ligula, quia nunc elementum velit sed massa adipiscing. Tellus in, odio justo etiam et. Velit diam tortor purus, volutpat aenean lectus ut mauris viverra ante, elementum mauris, senectus sed neque cras maecenas suspendisse. Donec vivamus elementum vehicula morbi nibh, sapien etiam placerat laoreet ultrices, erat enim felis tempus volutpat mauris, diam velit accumsan est nam.</p>
+<p>
+Fermentum mauris gravida nec in, suspendisse in diam adipiscing, eget orci suscipit, massa condimentum felis magnis integer elementum, natoque ut et tellus diam sociis. Orci porttitor diam, odio dolor pellentesque erat vel praesent, ac sem wisi pede, ultrices elementum aliquam vitae tempor ad orci, massa quam pellentesque sodales dolor. Habitasse luctus neque vel pellentesque. Diam suscipit amet vitae primis nisl, lorem massa pretium est. Aliquam praesent. Nunc wisi nisl amet in, mi congue sodales tellus nec, cras libero integer est phasellus ridiculus sociis. Arcu tincidunt vel, amet dui neque est.</p>
+<p>
+Sed vitae. Pulvinar vehicula amet in eros, maecenas magna bibendum, tincidunt interdum id eu sed consequat, hendrerit sollicitudin nibh magna velit in facilisis. Eget volutpat odio in adipiscing lorem. Eu neque mollis, lobortis tellus metus, lacus vel placerat ultricies nulla diam massa, at imperdiet mauris lacus lobortis neque. Scelerisque adipiscing non eros accumsan lorem molestie, cursus ante, placerat nibh pellentesque rem cursus sed pede, id a, suspendisse sollicitudin hac justo amet ipsum. Aut ullamcorper luctus placerat euismod hendrerit, tortor vitae nonummy eleifend ac quisque, donec et wisi, porta volutpat parturient mauris etiam. Porta facilisis donec vehicula nec. Eum et amet sed interdum, scelerisque ut, metus rhoncus dignissim ut vitae a, et vehicula erat venenatis id. Vitae accumsan feugiat morbi eleifend sollicitudin, eros nulla egestas nam penatibus augue luctus, volutpat eget. Id ipsum. Nascetur elementum nisl.</p>
+<p>
+Dui quis sed, accumsan sit eget duis ante dignissim. Morbi vestibulum arcu rerum non consequat morbi, vulputate sit aliquam faucibus et sed, cubilia eu urna mauris tincidunt malesuada lorem, pede a mi cras odio, lacinia in pharetra accusantium mauris. Lectus magnis iaculis morbi neque magna, platea a, maecenas tempor ridiculus, lectus suspendisse convallis elit vitae. Egestas nulla, augue proin lectus, quam vel gravida, elementum scelerisque. Risus amet in sed pretium velit, neque nibh dolor, justo odio in est, dui nec amet ullamcorper elementum ultricies in. Ante donec, vestibulum mauris. Vestibulum sit viverra suspendisse vehicula ac, at non ac placerat in, et posuere sit elementum quisque, pharetra erat amet cras magna aenean vel, necessitatibus sapien lacus mauris ante blandit. Massa vel, eu quisque turpis. Ligula est consectetuer id, mauris orci purus lacinia ipsum, dolor justo mauris, imperdiet phasellus.</p>
+<p>
+Quis sit aliquet accumsan, proin lobortis. Sit justo, vitae tristique metus sollicitudin, sapien malesuada egestas ad rutrum. Libero lobortis turpis justo, iaculis quis sed aenean malesuada, dui eros lorem eleifend pretium phasellus proin, nulla amet, rutrum rhoncus non. Montes mauris est vitae iaculis, magna sit erat sem nec, quis mi duis, eu porta tellus ut. Urna proin.</p>
+<div><video src="dee3_controller.mp4" controls></video></div>
+<p>
+Nascetur integer nulla congue, id velit vestibulum ornare, congue vulputate aliquam vitae dolor, bibendum metus eget. Urna massa malesuada quam class tellus, quis hac ipsum eget amet, sollicitudin a, morbi suspendisse vel, elit tincidunt neque lectus nobis justo et. Laoreet pellentesque ac praesent, dignissim lectus scelerisque purus ut. Massa dictum sociis elit pellentesque provident mi. Purus aliquam egestas nibh a nec. Elit elementum ac leo adipiscing libero amet, congue erat mus velit cursus sit sem, lorem lectus, at lectus. Doloribus eu tristique mattis, nullam rutrum odio donec, odio vel lectus nulla nunc sed.</p>
+<p>
+A sed quis id leo, etiam sagittis placerat vestibulum in, eros felis dictum nulla. Platea lectus, mus a nec dignissim. Ipsum amet ut feugiat id rutrum, pellentesque nibh ante urna dapibus in, ullamcorper in nostra risus donec sem rutrum, facilisis eros consequat, elit ex arcu vehicula commodo mauris luctus. Elementum donec iaculis, quam aliquam mollis, elementum semper consectetuer amet, potenti wisi aliquet, torquent nibh ut mi cras lacus nec. Sodales natoque id urna mauris volutpat turpis, nascetur nulla neque eget volutpat nec in, nulla volutpat ut ac, pellentesque arcu. Cursus sagittis quis, id sem sit nullam in nunc lacinia, blandit vivamus, lectus risus eiusmod mi.</p>
+<p>
+Congue libero lectus lacus, nec nunc augue maecenas at dolor, mollis id est erat ridiculus potenti ligula, orci elit et, ipsum vehicula. Sed amet inceptos integer tincidunt, vivamus odio vestibulum luctus imperdiet aliquam viverra. Vitae non nec magna, est quis iaculis elit, ad ut ante sem nec pulvinar vitae. Imperdiet nisl a urna pulvinar molestie placerat, augue eu condimentum euismod, felis elit integer lectus ullam hac congue, vel orci vulputate vel, tincidunt pharetra lacinia et cras fermentum. Leo ante eu magna hymenaeos lobortis scelerisque.</p>
+<p>
+</p>
+</section>
+</main>
+<footer>&copy; Don W. Voorhies - 2017</footer>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/onepage-scroll/1.3.1/onepage-scroll.min.css" />-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/smooth-scroll/12.1.5/js/smooth-scroll.min.js"></script>
+<script>
+/*
+Inspiration from: <br>
+https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
+https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+...and even considered:
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+
+In short: Is this viewed on a mobile device, and if so add the class "mobi" for the slideToggel-function below, so we won't experience weird, unintenden behavior with smooth-scroll and the RWD-menu 
+*/
+$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 599px)");
+
+    if (isMobile.matches) {
+$("a.funk").addClass("mobi");
+   
+   }
+ });
+</script>
+<script> 
+$(document).ready(function(){$("#burgernav").click(function(){$("nav").slideToggle("slow");});$(".mobi").click(function(){$("nav").slideUp("slow");});});
+</script>	
+<script>
+	var scroll = new SmoothScroll('a[href*="#"]', {
+	// Selectors
+	//ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
+	//header: null, // Selector for fixed headers (must be a valid CSS selector)
+
+	// Speed & Easing
+	speed: 600, // Integer. How fast to complete the scroll in milliseconds
+	offset: 100, // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
+	//easing: 'easeInOutCubic', // Easing pattern to use
+	//customEasing: function (time) {}, // Function. Custom easing pattern
+
+	// Callback API
+	//before: function () {}, // Callback to run before scroll
+	//after: function () {} // Callback to run after scroll
+});
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Work+Sans:400,700']
+    }
+  });
+</script>
+</body>
+</html>
