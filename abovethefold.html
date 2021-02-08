@@ -37,8 +37,8 @@ div.ref_links ul li{height:63px}
 <section><h2>1st step: &quot;Find the critical CSS&quot; (using the "CSS Used"-plugin for Google Chrome)</h2>
 <div class="ref_links">Source(s):
 <ul>
-<li><a href="https://chrome.google.com/webstore/detail/css-used/cdopjfddjlonogibjahpnmjpoangjfff" target="_blank">https://chrome.google.com/webstore/detail/css-used/cdopjfddjlonogibjahpnmjpoangjfff</a></li>
-<li><a href="https://varvy.com/pagespeed/render-blocking-css.html">https://varvy.com/pagespeed/render-blocking-css.html</a></li></ul></div>
+<li><a href="https://chrome.google.com/webstore/detail/css-used/cdopjfddjlonogibjahpnmjpoangjfff" target="_blank" rel=”noopener”>https://chrome.google.com/webstore/detail/css-used/cdopjfddjlonogibjahpnmjpoangjfff</a></li>
+<li><a href="https://varvy.com/pagespeed/render-blocking-css.html" rel=”noopener”>https://varvy.com/pagespeed/render-blocking-css.html</a></li></ul></div>
 <div>Either read bobscript.com's <a href="https://translate.google.com/translate?sl=auto&tl=en&js=y&prev=_t&hl=da&ie=UTF-8&u=https%3A%2F%2Fbobscript.com%2F&edit-text=" target="_blank">article</a> regarding this topic, and and follow their instructions to use their Chrome-plugin, to find your page's critical CSS. 
 insert the &quot;generated critical CSS&quot; as inline CSS between the &lt;head&gt;&lt;/head&gt;-element of your page.<br>
 For more info, read Patrick Sexton's article: &quot;<a href="https://varvy.com/pagespeed/render-blocking-css.html" target="_blank">Eliminate render blocking css</a>&quot;.</div>
@@ -60,7 +60,7 @@ Repeat the function-call above, if you have any other CSS-files that you need to
 </section>
 <section><h2>3rd step: webfontloader</h2>
 <div class="ref_links">Source:<ul> 
- <li><a href="https://github.com/typekit/webfontloader" target="_blank">webfontloader</a></li></ul></div>
+ <li><a href="https://github.com/typekit/webfontloader" target="_blank" rel=”noopener”>webfontloader</a></li></ul></div>
  <div>NOTE: Read/Use only the following, IF you'll be implementing Google Fonts (or Typekit) - otherwise - move along...</div>
 <code>
 ...&lt;/footer&gt;<br>
@@ -79,22 +79,22 @@ Repeat the function-call above, if you have any other CSS-files that you need to
  </section>
  <section><h2>Links:</h2>
  <ul>
-  <li><a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank">https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a</a></li>
-  <li><a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank">https://jonassebastianohlsson.com/criticalpathcssgenerator/</a></li>
+  <li><a href="https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a" target="_blank" rel=”noopener”>https://medium.com/@katieharron/critical-css-finder-javascript-snippet-and-bookmarklet-84cc8a09596a</a></li>
+  <li><a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/" target="_blank" rel=”noopener”>https://jonassebastianohlsson.com/criticalpathcssgenerator/</a></li>
   <li><a href="https://varvy.com/pagespeed/render-blocking-css.html">https://varvy.com/pagespeed/render-blocking-css.html</a></li>
-  <li><a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></li>
-  <li><a href="https://github.com/typekit/webfontloader" target="_blank">https://github.com/typekit/webfontloader</a></li>
+  <li><a href="https://github.com/filamentgroup/loadCSS" target="_blank" rel=”noopener”>https://github.com/filamentgroup/loadCSS</a></li>
+  <li><a href="https://github.com/typekit/webfontloader" target="_blank" rel=”noopener”>https://github.com/typekit/webfontloader</a></li>
   </ul>
  </section>
 <div class="push"></div>
 </main>
- <footer><a href="https://donvoorhies.github.io/tuts/">[Menu]</a></footer>
+ <footer><a href="https://donvoorhies.github.io/tuts/" rel=”noopener”>[Menu]</a></footer>
 
 <!--The following two lines are commented out, as this page isn't using any external CSS-files
 <script src="//cdn.rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"</script>
 <script>loadCSS( "path/to/mystylesheet.css" );</script>-->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha512-v/wOVTkoU7mXEJC3hXnw9AA6v32qzpknvuUF6J2Lbkasxaxn2nYcl+HGB7fr/kChGfCqubVr1n2sq1UFu3Gh1w==" crossorigin="anonymous"></script>
 <script>WebFont.load({google:{families:["Lato:400,700","Open+Sans:400,700"]}});</script>
 <script>$(document).ready(function(){$(window).resize(function(){var a=$("footer").outerHeight();$(".push").height(a),$("main").css({marginBottom:"-"+a+"px"})}),$(window).resize()});/*http://codepen.io/imohkay/pen/htpzf*/</script>
 </body>
