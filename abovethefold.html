@@ -7,7 +7,7 @@
 <style>
 * {margin:0}
 html, body {height:100%}
-body{font:16px 'Open Sans', Sans-Serif, Serif}
+body{font:16px 'Open Sans', Sans-Serif, Serif;margin: 0 90%}
 main {min-height:100%;margin:0 auto -45px}
 header{height:54px;background:#000}
 header h1{font:2em 'Lato',Sans-Serif,Serif;color:#FFF;line-height:54px}
@@ -45,7 +45,7 @@ For more background-info, read wev.dev's article: &quot;<a href="https://web.dev
 </section>
 <section><h2>2nd step: LoadCSS</h2>
 <div class="ref_links">Source:<ul>
-<li><a href="https://github.com/filamentgroup/loadCSS" target="_blank">https://github.com/filamentgroup/loadCSS</a></li></ul></div>
+<li><a href="https://github.com/filamentgroup/loadCSS" target="_blank" rel="noopener">https://github.com/filamentgroup/loadCSS</a></li></ul></div>
 <div>Using Filament Group's "loadCSS"-script might be of interest for you, if you have to use further aditional CSS-files on your web-page.</div>
 <div>N.B.: I've taken the liberty of compressing the LoadCSS-script, as shown below! In any event, I'd recommend that you insert Filament Group&acute;s LoadCSS-script inline in your code!</div><br><br>
 <code>...&lt;/footer&gt;<br>&lt;script&gt;/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!==typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!==typeof global?global:this);"&lt;/script&gt;<br>
@@ -65,14 +65,14 @@ Repeat the function-call above, if you have any other CSS-files that you need to
 <code>
 ...&lt;/footer&gt;<br>
 (the lines of code above for "loadCSS" goes in here, then insert subsequently...)<br>
-&lt;script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"&gt;&lt;/script&gt;<br>
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;&lt;/script&gt;<br>
 (All of your other jQuery-libraries that you need to use put in here, then followed by...)<br>
-&lt;script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"&gt;&lt;/script&gt;<br>
+&lt;script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"&gt;&lt;/script&gt;<br>
 &lt;script&gt;WebFont.load({google:{families: ['Droid Sans','Droid Serif']}});&lt;/script&gt;<br>
 &lt;/body&gt;
 </code>
 </section>
-<section><h2>Conclusion:</h2>
+<section><h2>Conclusion:</h2>https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js
 <div>The practices described in the above (or most of them) have also been implemented in connection with this &quot;how-to&quot;,<br> 
  which you've just read! If it's worked or not, can be seen here: <a href="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fdonvoorhies.github.io%2Ftuts%2Fabovethefold.html&tab=desktop" target="_blank">Pagespeed Insights</a></div>
  <div>You're more than welcome to check out this webpage's <a href="https://raw.githubusercontent.com/donvoorhies/tuts/master/abovethefold.html" target="_blank">source-code</a> to see an example, regarding how things were done in connection with the described steps above</div>
