@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MicroMenu 2.0 — a modern RWD menu</title>
+<style>
+  /* ── Reset & base ───────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #f9f7f4;
+    --surface:  #ffffff;
+    --border:   #e4e1da;
+    --text:     #1c1b19;
+    --muted:    #6b6860;
+    --accent:   #1a6ef7;
+    --accent-l: #e8f0fe;
+    --code-bg:  #f0ede8;
+    --nav-h:    52px;
+    --radius:   8px;
+    --mono: 'Courier New', Courier, monospace;
+    --sans: Georgia, 'Times New Roman', serif;   /* editorial feel */
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── Demo nav (the actual component) ───────────── */
+  nav#demo-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    display: block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    transition: background .15s, color .15s;
+  }
+  .nav-links a:hover { background: var(--bg); color: var(--text); }
+  .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    padding: 6px;
+    border: none; background: none;
+    cursor: pointer; border-radius: 6px;
+    transition: background .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .burger:hover { background: var(--bg); }
+  .burger span {
+    display: block; height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform .25s ease, opacity .2s ease, width .25s ease;
+  }
+  nav#demo-nav.open .burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  nav#demo-nav.open .burger span:nth-child(2) { opacity: 0; width: 0; }
+  nav#demo-nav.open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-drawer {
+    display: none;
+    position: absolute;
+    top: var(--nav-h); left: 0; right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 12px;
+    max-height: 0; overflow: hidden;
+    transition: max-height .28s ease, padding .28s ease;
+  }
+  nav#demo-nav.open .nav-drawer { max-height: 300px; padding: 8px 12px 12px; }
+  .nav-drawer a {
+    display: block; padding: 12px 16px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: var(--muted); border-radius: 8px;
+    transition: background .15s, color .15s;
+  }
+  .nav-drawer a:hover { background: var(--bg); color: var(--text); }
+  .nav-drawer a.active { color: var(--accent); font-weight: 600; }
+
+  @media (max-width: 699px) {
+    .nav-links { display: none; }
+    .burger    { display: flex; }
+    .nav-drawer{ display: block; }
+  }
+
+  /* ── Page layout ────────────────────────────────── */
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  /* ── Typography ─────────────────────────────────── */
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 48px 0 16px;
+    letter-spacing: -.01em;
+  }
+
+  p { margin-bottom: 18px; }
+
+  a { color: var(--accent); }
+
+  /* ── Version badge ──────────────────────────────── */
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    position: relative;
+    top: -3px;
+  }
+
+  /* ── Comparison table ───────────────────────────── */
+  .comparison {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    margin: 24px 0 32px;
+  }
+  .comparison th {
+    background: var(--code-bg);
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  .comparison td {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .comparison tr:nth-child(even) td { background: #faf9f7; }
+  .comparison .old  { color: #b04a30; }
+  .comparison .new  { color: #1a7a3c; }
+  .comparison .tick::before { content: '✓ '; color: #1a7a3c; font-weight: 700; }
+  .comparison .cross::before{ content: '✗ '; color: #b04a30; font-weight: 700; }
+
+  /* ── Code blocks ────────────────────────────────── */
+  .code-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2b2a27;
+    color: #a8a49e;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    margin-top: 24px;
+    letter-spacing: .04em;
+  }
+  pre {
+    background: #1e1d1b;
+    color: #d4d0c8;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 20px;
+    overflow-x: auto;
+    border-radius: 0 0 var(--radius) var(--radius);
+    margin-bottom: 8px;
+    tab-size: 2;
+  }
+  code { font-family: var(--mono); font-size: .9em; background: var(--code-bg); padding: 1px 5px; border-radius: 3px; }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* Syntax colouring (minimal, hand-rolled) */
+  .kw  { color: #a78bfa; } /* keyword / tag */
+  .at  { color: #60a5fa; } /* attribute */
+  .st  { color: #86efac; } /* string */
+  .cm  { color: #6b7280; font-style: italic; } /* comment */
+  .fn  { color: #fbbf24; } /* function/selector */
+  .va  { color: #f9a8d4; } /* variable */
+
+  /* ── Callout box ────────────────────────────────── */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-l);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 24px 0;
+    font-size: 15px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #0f3d8a;
+  }
+
+  /* ── Footer ─────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ── The live demo nav itself ─────────────────────── -->
+<nav id="demo-nav" aria-label="Main navigation">
+  <ul class="nav-links" role="list">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">Page 1</a></li>
+    <li><a href="#">Page 2</a></li>
+    <li><a href="#">Page 3</a></li>
+  </ul>
+  <button class="burger" id="burger-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-drawer" id="nav-drawer" role="navigation" aria-label="Mobile navigation">
+    <a href="#" class="active">Home</a>
+    <a href="#">Page 1</a>
+    <a href="#">Page 2</a>
+    <a href="#">Page 3</a>
+  </div>
+</nav>
+
+<!-- ── Tutorial content ─────────────────────────────── -->
+<main class="page">
+
+  <h1>MicroMenu <span class="badge">v2.0</span></h1>
+  <p class="subtitle">"Still small. No longer ancient."</p>
+
+  <p>
+    The original MicroMenu was a neat trick: a responsive nav in a handful of lines, with only 89 characters of JavaScript. It used a <code>&lt;select&gt;</code> dropdown to replace the menu on mobile, which was clever in 2013 — but the web has moved on.
+  </p>
+  <p>
+    MicroMenu 2.0 keeps the same philosophy — <strong>no jQuery, no frameworks, minimal code</strong> — but replaces the <code>&lt;select&gt;</code> with a proper animated hamburger menu using techniques that are now standard across browsers.
+  </p>
+  <p>
+    The nav bar above this text <em>is</em> the demo. Resize your browser below 699px (or open on a phone) to see it switch modes.
+  </p>
+
+  <h2>What changed and why</h2>
+
+  <table class="comparison">
+    <thead>
+      <tr><th>Aspect</th><th class="old">v1.0</th><th class="new">v2.0</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mobile UI</td>
+        <td class="cross old"><code>&lt;select&gt;</code> — triggers native OS picker</td>
+        <td class="tick new">Hamburger button + slide-down drawer</td>
+      </tr>
+      <tr>
+        <td>JavaScript</td>
+        <td class="cross old">Inline <code>onChange</code> attribute</td>
+        <td class="tick new"><code>addEventListener</code> in a <code>&lt;script&gt;</code> block</td>
+      </tr>
+      <tr>
+        <td>Navigation</td>
+        <td class="cross old"><code>self.location</code> (archaic)</td>
+        <td class="tick new">Standard <code>&lt;a href&gt;</code> links</td>
+      </tr>
+      <tr>
+        <td>Unnecessary markup</td>
+        <td class="cross old"><code>&lt;form&gt;</code> wrapper around <code>&lt;select&gt;</code></td>
+        <td class="tick new">Removed — it served no purpose</td>
+      </tr>
+      <tr>
+        <td>Accessibility</td>
+        <td class="cross old">No keyboard support, no ARIA</td>
+        <td class="tick new"><code>aria-label</code>, <code>aria-expanded</code>, <code>aria-controls</code></td>
+      </tr>
+      <tr>
+        <td>CSP compatibility</td>
+        <td class="cross old">Inline event handlers blocked by strict CSP</td>
+        <td class="tick new">No inline handlers — CSP-safe</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>The HTML</h2>
+
+  <p>The structure is the same <code>&lt;nav&gt;</code>-wraps-everything approach. The <code>&lt;ul&gt;</code> is for desktop, and a <code>&lt;div&gt;</code> drawer (hidden by default) serves mobile. The hamburger is a <code>&lt;button&gt;</code> — not a <code>&lt;div&gt;</code>, not a checkbox hack — so it gets focus, keyboard activation, and screen-reader semantics for free.</p>
+
+  <div class="code-label"><span>HTML</span></div>
+<pre><code><span class="kw">&lt;nav</span> <span class="at">id</span>=<span class="st">"main-nav"</span> <span class="at">aria-label</span>=<span class="st">"Main navigation"</span><span class="kw">&gt;</span>
+
+  <span class="cm">&lt;!-- Desktop: horizontal link list --&gt;</span>
+  <span class="kw">&lt;ul</span> <span class="at">class</span>=<span class="st">"nav-links"</span> <span class="at">role</span>=<span class="st">"list"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span> <span class="at">href</span>=<span class="st">"index.html"</span> <span class="at">class</span>=<span class="st">"active"</span><span class="kw">&gt;</span>Home<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side1.html"</span><span class="kw">&gt;</span>Page 1<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side2.html"</span><span class="kw">&gt;</span>Page 2<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="kw">&lt;li&gt;&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side3.html"</span><span class="kw">&gt;</span>Page 3<span class="kw">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="kw">&lt;/ul&gt;</span>
+
+  <span class="cm">&lt;!-- Mobile: hamburger button --&gt;</span>
+  <span class="kw">&lt;button</span> <span class="at">class</span>=<span class="st">"burger"</span> <span class="at">id</span>=<span class="st">"burger-btn"</span>
+          <span class="at">aria-label</span>=<span class="st">"Toggle menu"</span>
+          <span class="at">aria-expanded</span>=<span class="st">"false"</span>
+          <span class="at">aria-controls</span>=<span class="st">"nav-drawer"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;span&gt;&lt;/span&gt;</span>
+    <span class="kw">&lt;span&gt;&lt;/span&gt;</span>
+    <span class="kw">&lt;span&gt;&lt;/span&gt;</span>
+  <span class="kw">&lt;/button&gt;</span>
+
+  <span class="cm">&lt;!-- Mobile: slide-down drawer --&gt;</span>
+  <span class="kw">&lt;div</span> <span class="at">class</span>=<span class="st">"nav-drawer"</span> <span class="at">id</span>=<span class="st">"nav-drawer"</span>
+       <span class="at">role</span>=<span class="st">"navigation"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;a</span> <span class="at">href</span>=<span class="st">"index.html"</span> <span class="at">class</span>=<span class="st">"active"</span><span class="kw">&gt;</span>Home<span class="kw">&lt;/a&gt;</span>
+    <span class="kw">&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side1.html"</span><span class="kw">&gt;</span>Page 1<span class="kw">&lt;/a&gt;</span>
+    <span class="kw">&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side2.html"</span><span class="kw">&gt;</span>Page 2<span class="kw">&lt;/a&gt;</span>
+    <span class="kw">&lt;a</span> <span class="at">href</span>=<span class="st">"pages/side3.html"</span><span class="kw">&gt;</span>Page 3<span class="kw">&lt;/a&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+
+<span class="kw">&lt;/nav&gt;</span></code></pre>
+
+  <div class="callout">
+    Note the three empty <code>&lt;span&gt;</code> elements inside the button — these are the three bars of the hamburger icon, drawn entirely in CSS and animated into an ✕ when the menu opens.
+  </div>
+
+  <h2>The CSS</h2>
+
+  <p>The show/hide logic is the same idea as v1.0: the desktop list and the mobile button are swapped at the breakpoint. The drawer uses a <code>max-height</code> transition for the slide-in effect — <code>height: auto</code> can't be transitioned directly in CSS, so <code>max-height</code> is the standard workaround.</p>
+
+  <div class="code-label"><span>CSS</span></div>
+<pre><code><span class="cm">/* ── Nav container ─────────────────────────── */</span>
+<span class="fn">nav</span> {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+}
+
+<span class="cm">/* ── Desktop links ─────────────────────────── */</span>
+<span class="fn">.nav-links</span> { display: flex; gap: 4px; list-style: none; }
+<span class="fn">.nav-links a</span> {
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+
+<span class="cm">/* ── Hamburger button ──────────────────────── */</span>
+<span class="fn">.burger</span> {
+  display: none;           <span class="cm">/* hidden on desktop */</span>
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  border: none; background: none;
+  cursor: pointer;
+}
+<span class="fn">.burger span</span> {
+  display: block; height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+<span class="cm">/* Animate bars → ✕ when nav has .open class */</span>
+<span class="fn">nav.open .burger span:nth-child(1)</span> { transform: translateY(6.5px) rotate(45deg); }
+<span class="fn">nav.open .burger span:nth-child(2)</span> { opacity: 0; }
+<span class="fn">nav.open .burger span:nth-child(3)</span> { transform: translateY(-6.5px) rotate(-45deg); }
+
+<span class="cm">/* ── Mobile drawer ─────────────────────────── */</span>
+<span class="fn">.nav-drawer</span> {
+  display: none;           <span class="cm">/* rendered but hidden (needed for transition) */</span>
+  position: absolute;
+  top: 52px; left: 0; right: 0;
+  max-height: 0;           <span class="cm">/* collapsed by default */</span>
+  overflow: hidden;
+  transition: max-height .28s ease, padding .28s ease;
+}
+<span class="fn">nav.open .nav-drawer</span> { max-height: 300px; padding: 8px 12px 12px; }
+<span class="fn">.nav-drawer a</span> { display: block; padding: 12px 16px; border-radius: 8px; }
+
+<span class="cm">/* ── Responsive breakpoint ─────────────────── */</span>
+<span class="fn">@media (max-width: 699px)</span> {
+  <span class="fn">.nav-links</span> { display: none;  }  <span class="cm">/* hide desktop links */</span>
+  <span class="fn">.burger</span>    { display: flex;  }  <span class="cm">/* show burger button */</span>
+  <span class="fn">.nav-drawer</span>{ display: block; }  <span class="cm">/* allow drawer to open */</span>
+}</code></pre>
+
+  <h2>The JavaScript</h2>
+
+  <p>Three responsibilities: toggle the menu open/closed, close it when a link is tapped, and close it when the user clicks outside. That's it.</p>
+
+  <div class="code-label"><span>JavaScript</span></div>
+<pre><code><span class="kw">const</span> <span class="va">nav</span> = document.getElementById(<span class="st">'main-nav'</span>);
+<span class="kw">const</span> <span class="va">btn</span> = document.getElementById(<span class="st">'burger-btn'</span>);
+
+<span class="cm">// Toggle open/closed</span>
+<span class="va">btn</span>.addEventListener(<span class="st">'click'</span>, () => {
+  <span class="kw">const</span> <span class="va">open</span> = <span class="va">nav</span>.classList.toggle(<span class="st">'open'</span>);
+  <span class="va">btn</span>.setAttribute(<span class="st">'aria-expanded'</span>, <span class="va">open</span>);
+});
+
+<span class="cm">// Close when a drawer link is tapped</span>
+document.getElementById(<span class="st">'nav-drawer'</span>)
+  .querySelectorAll(<span class="st">'a'</span>)
+  .forEach(<span class="va">a</span> => {
+    <span class="va">a</span>.addEventListener(<span class="st">'click'</span>, () => {
+      <span class="va">nav</span>.classList.remove(<span class="st">'open'</span>);
+      <span class="va">btn</span>.setAttribute(<span class="st">'aria-expanded'</span>, <span class="st">'false'</span>);
+    });
+  });
+
+<span class="cm">// Close on outside click</span>
+document.addEventListener(<span class="st">'click'</span>, <span class="va">e</span> => {
+  <span class="kw">if</span> (!<span class="va">nav</span>.contains(<span class="va">e</span>.target)) {
+    <span class="va">nav</span>.classList.remove(<span class="st">'open'</span>);
+    <span class="va">btn</span>.setAttribute(<span class="st">'aria-expanded'</span>, <span class="st">'false'</span>);
+  }
+});</code></pre>
+
+  <div class="callout">
+    The breakpoint is still 699px — same as v1.0. Change it to whatever suits your project by updating <code>@media (max-width: 699px)</code> in the CSS.
+  </div>
+
+  <h2>Conclusion</h2>
+
+  <p>
+    MicroMenu 2.0 is still lightweight and dependency-free. The JavaScript is roughly 20 lines instead of 89 characters — but those 20 lines do a proper job: keyboard-accessible, screen-reader-friendly, CSP-safe, and without the native OS picker awkwardness of the old <code>&lt;select&gt;</code> approach.
+  </p>
+  <p>
+    As with v1.0: <strong>not suited for smooth-scrolled single-page sites</strong> — you'll want a scroll-spy setup for those. For everything else, it's still the smallest sensible RWD nav around.
+  </p>
+
+  <p style="margin-top:40px">
+    <a href="https://donvoorhies.github.io/tuts/">← Back to tuts index</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://donvoorhies.github.io/tuts/micromenu.html">Read MicroMenu v1.0</a>
+  </p>
+
+</main>
+
+<footer>
+  <p>MicroMenu 2.0 &mdash; <a href="https://github.com/donvoorhies">donvoorhies</a> &mdash; no rights reserved, do what you want with it.</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('demo-nav');
+  const btn = document.getElementById('burger-btn');
+
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  document.getElementById('nav-drawer')
+    .querySelectorAll('a')
+    .forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+</body>
+</html>
